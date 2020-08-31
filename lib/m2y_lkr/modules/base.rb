@@ -3,11 +3,11 @@ module M2yLkr
 	class Base 
 
             def self.baseUrl
-                  M2yFlash.configuration.lkr_server_url
+                  M2yLkr.configuration.lkr_server_url
             end
 
             def self.basicAuth
-                  M2yFlash.configuration.lkr_server_token
+                  M2yLkr.configuration.lkr_server_token
             end
 
             def self.basicHeaders
