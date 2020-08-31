@@ -3,7 +3,7 @@ module M2yLkr
 	class Billet < Base
 
             def self.baseUrl
-                  M2yFlash.configuration.billet_server_url
+                  M2yLkr.configuration.billet_server_url
             end
 
             def self.createBillet(params, ip = nil)
