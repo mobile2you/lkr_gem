@@ -29,8 +29,8 @@ Or install it yourself as:
 ```ruby
 # config/initializers/flash.rb
 M2yLkr.configure do |config|
-  config.api_server_url  = 'http://...'
-  config.api_server_token = 'TOKEN'
+  config.lkr_server_url  = 'http://...'
+  config.lkr_server_token = 'TOKEN'
 end
 ```
 
