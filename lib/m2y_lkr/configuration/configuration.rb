@@ -16,7 +16,7 @@ module M2yLkr
     end
 
     def lkr_server_token
-     "Basic #{@lkr_server_token}"
+     @lkr_server_token
     end
     
     def billet_server_url

@@ -7,11 +7,11 @@ module M2yLkr
             end
 
             def self.basicAuth
-                  M2yLkr.configuration.lkr_server_token
+                 "Basic #{M2yLkr.configuration.lkr_server_token}"
             end
 
             def self.basicHeaders
-                  { 'Content-Type' => "application/json", 'Authorization' => basicAuth }
+                  {'Content-Type' => "application/json", 'Authorization' => basicAuth }
             end
 
             def self.parse_response(req, url, body, name)
