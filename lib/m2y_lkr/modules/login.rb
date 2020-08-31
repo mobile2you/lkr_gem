@@ -16,7 +16,7 @@ module M2yLkr
                         body["key"] = key
                   end
                   req = HTTParty.post(url, headers: basicHeaders, body: body.to_json)
-                  body["password"] =  nil
+                  body[:password] =  nil
                   parse_response(req, url, body.to_s, "login")
             end
 
