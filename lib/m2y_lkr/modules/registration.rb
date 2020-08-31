@@ -5,6 +5,7 @@ module M2yLkr
             def self.sendDocuments(cnpj, cpf, type, document, pep, revenue)
                   url = "#{baseUrl}#{DOCUMENT_PATH}"
                   body = {"cpf": cpf.gsub(/[^0-9]/, ''), "cnpj": cnpj.gsub(/[^0-9]/, '')}
+                  log_body = body
                   content = 'image/jpeg'
                   case type
                   when 'rg_front'
@@ -29,13 +30,14 @@ module M2yLkr
                   req = HTTParty.post(url,
                           headers: basicHeaders,
                           body: body)
-                  { :status => req.code, :content => req.parsed_response }
+                  parse_response(req, url, log_body.to_s, "Envio de documento: #{type}")
             end
 
             def self.sendPerEmail (cpf, cnpj)
                   url = "#{baseUrl}#{DOCUMENT_PATH}#{MAIL_PATH}"
-                  req = HTTParty.post(url, headers: basicHeaders, body: {"cpf": cpf.gsub(/[^0-9]/, ''), "cnpj": cnpj.gsub(/[^0-9]/, '')} )
-                  {:status => req.code, :content => req.parsed_response}
+                  body = {"cpf": cpf.gsub(/[^0-9]/, ''), "cnpj": cnpj.gsub(/[^0-9]/, '')}.to_s
+                  req = HTTParty.post(url, headers: basicHeaders, body: body )
+                  parse_response(req, url, body.to_s, "Send Company Doc per Email")
             end
 
       end

@@ -2,13 +2,6 @@ module M2yLkr
 
 	class Cards < Base
 
-
-            def self.getLinkAccountStatus(idLinker)
-                  url = "#{baseUrl}#{TRANSFERS_PATH}/#{idLinker}"
-                  req = HTTParty.get(url, headers: basicHeaders)
-                  { status: req.code, content: req.parsed_response}
-            end
-
             def self.requestCard(id_linker, cpf, id_partner, id)
                   url = URI("#{baseUrl}#{CARD_PATH}#{NEW_PATH}")
                   https = Net::HTTP.new(url.host, url.port);
@@ -19,9 +12,9 @@ module M2yLkr
                   request.body = JSON.pretty_generate(id_linker: id_linker, cpf: cpf.gsub(/[^0-9]/, ''), id_partner: id_partner, fingerprint: id.to_s )
                   response = https.request(request)
                   begin
-                    response = { status: response.code.to_i, content: JSON.parse(response.read_body)}
+                    response = { status: response.code.to_i, content: JSON.parse(response.read_body), body: request.body.to_s, url: url}
                   rescue
-                    response = { status: response.code.to_i, content: {}}
+                    response = { status: response.code.to_i, content: {}, body: request.body.to_s, url: url}
                   end
                   response
             end
@@ -36,9 +29,9 @@ module M2yLkr
                   request.body = JSON.pretty_generate(id_linker: id_linker, cpf: cpf.gsub(/[^0-9]/, ''), card_id_partner: card_id, reason: reason, reason_description: reason_desc, fingerprint: id.to_s)
                   response = https.request(request)
                   begin
-                    response = { status: response.code.to_i, content: JSON.parse(response.read_body)}
+                    response = { status: response.code.to_i, content: JSON.parse(response.read_body), body: request.body.to_s, url: url}
                   rescue
-                    response = { status: response.code.to_i, content: {}}
+                    response = { status: response.code.to_i, content: {}, body: request.body.to_s, url: url}
                   end
                   response
             end

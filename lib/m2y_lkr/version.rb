@@ -1,3 +1,3 @@
 module M2yLkr
-  VERSION = "0.0.1"
+  VERSION = "0.0.2"
 end
