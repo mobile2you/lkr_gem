@@ -1,4 +1,4 @@
-module M2yFlash
+module M2yLkr
   COMPANIES_PATH = "/companies"
   LOGIN_PATH = "/login"
   PASSWORD_PATH = "/password"

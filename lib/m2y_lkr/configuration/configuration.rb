@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module M2yFlash
+module M2yLkr
   class Configuration    
 
     attr_writer :api_server_url, :api_server_token, :billet_server_url
